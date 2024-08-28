@@ -2,6 +2,8 @@
 ## Introduction
 The provided code is an event management system implemented in Python, utilizing SQLite for database operations. Below is the guide to use the system. 
 
+## 🔧Tools
+Python, SQLite, DB Browser for SQLite
 
 ## 🔑Main Menu
 #### Register Account
@@ -185,6 +187,9 @@ password:123
 
 ## Schema
 <img src="schema.drawio.png" />
+
+## DB browser
+<img src="db_tables.png" />
 
 
 ## Improvement
