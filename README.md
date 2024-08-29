@@ -1,6 +1,10 @@
 # Event Management system
 ## Introduction
 The provided code is an event management system implemented in Python, utilizing SQLite for database operations. Below is the guide to use the system. 
+## Package Requirement
+Type this command:
+
+      pip install -r requirements.txt
 
 ## 🔧Tools
 Python, SQLite, DB Browser for SQLite

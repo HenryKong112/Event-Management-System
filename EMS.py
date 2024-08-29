@@ -1,7 +1,8 @@
 import sqlite3
 import csv
 from datetime import datetime
-def create_table():
+import re
+def create_table():  
     conn = sqlite3.connect('project_database.db')
     cursor = conn.cursor()
     cursor.execute('PRAGMA foreign_keys = ON;')
@@ -147,8 +148,6 @@ def add_feedback(ticket_id, comment, ratings):
     conn.close()
     print("Feedback added successfully.")
 ############################################################################^^^^ADD FUNCTION^^^^^^^^^###########################################################################################################################################################
-import sqlite3
-
 def view_user():
     conn = sqlite3.connect('project_database.db')
     cursor = conn.cursor()
@@ -332,7 +331,7 @@ def update_feedback(feedback_id, new_ticket_id, new_comment, new_ratings):
     conn.close()
     print("Feedback information updated successfully.")
 ###########################################################################^^^^^^^ EDIT ^^^^^^^^^################################################################################################################
-import sqlite3
+
 
 def del_user(user_id):
     conn = sqlite3.connect('project_database.db')
@@ -367,15 +366,7 @@ def del_event(event_id):
     conn.commit()
     conn.close()
     print("Event deleted successfully.")
-'''
-def del_venue(venue_id):
-    conn = sqlite3.connect('project_database.db')
-    cursor = conn.cursor()
-    cursor.execute('DELETE FROM venue WHERE venue_id = ?', (venue_id,))
-    conn.commit()
-    conn.close()
-    print("Venue deleted successfully.")
-'''
+
 def del_feedback(feedback_id):
     conn = sqlite3.connect('project_database.db')
     cursor = conn.cursor()
@@ -505,7 +496,6 @@ def admin_venue_management():
     print("1. View venue")
     print("2. Add venue")
     print("3. Edit venue")
-    # print("4. Delete venue") 
     print("4. Return to main menu")
 
 def admin_ticket_management():
@@ -568,7 +558,7 @@ def authenticate_user(name, password):
 
 ###################################################################################
 
-def view_PA(name, password):
+def view_peronal_acc(name, password):
     conn = sqlite3.connect('project_database.db')
     cursor = conn.cursor()
     # Retrieve record from 'user' table
@@ -581,7 +571,7 @@ def view_PA(name, password):
     else:
         print("No user found.")
 
-def edit_PA(name, password,new_user_name, new_user_password,new_user_pn,new_user_email,new_user_gender,new_user_age):
+def edit_personal_acc(name, password,new_user_name, new_user_password,new_user_pn,new_user_email,new_user_gender,new_user_age):
     conn = sqlite3.connect('project_database.db')
     cursor = conn.cursor()
     # Retrieve record from 'user' table
@@ -781,7 +771,7 @@ def cancel_tickets(login_user_id):
     conn.commit()
     conn.close()
 ##################################^^^^^^User Ticket Management^^^^^^##############################################
-import re
+
 
 def is_valid_password(password):
      return len(password) >=8 
@@ -1023,9 +1013,6 @@ def admin_menu(result,name):
                     new_capacity = input("Enter new capacity: ")
                     update_venue(venue_id, new_location, new_capacity)
                 conn.close()
-            # elif function_choice == 4:  # Delete venue
-                # del_venue(int(input('Delete venue_id: ')))
-
 
         elif table_choice == 4:  # Ticket Management
             print("\nThis is the Ticket Management section. Would you like to:")
@@ -1104,7 +1091,7 @@ def user_menu(name, password):
             print('1. View Personal Account \n2. Edit Personal Account')
             option = int(input('Option: '))
             if option == 1:
-                view_PA(name, password)
+                view_peronal_acc(name, password)
             elif option == 2:
                 new_user_name = input("Enter new_user_name: ")
                 new_user_password = input("Enter new_user_password: ")
@@ -1112,7 +1099,7 @@ def user_menu(name, password):
                 new_user_email = input("Enter new email: ")
                 new_user_gender = input("Enter new gender: ")
                 new_user_age = input("Enter new age: ")
-                edit_PA(name, password,new_user_name, new_user_password,new_user_pn,new_user_email,new_user_gender,new_user_age)    
+                edit_personal_acc(name, password,new_user_name, new_user_password,new_user_pn,new_user_email,new_user_gender,new_user_age)    
             else: 
                 print('invalid input')
     
